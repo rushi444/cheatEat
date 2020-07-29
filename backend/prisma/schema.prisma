@@ -1,0 +1,21 @@
+generator prisma_client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = "postgres://tnicyrao:h-PbS1lYw83si6OapuAeIsAEHbRa7vGo@drona.db.elephantsql.com:5432/tnicyrao"
+}
+
+model User {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    birthDate DateTime
+    Post      Post?    @relation(fields: [postId], references: [id])
+    postId    String?
+}
+
+model Post {
+    id     String @id @default(cuid())
+    author User[]
+}
