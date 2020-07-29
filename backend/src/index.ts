@@ -1,13 +1,9 @@
-import { use } from 'nexus'
-import { prisma } from 'nexus-plugin-prisma'
-import { PrismaClient } from 'nexus-plugin-prisma/client'
+import { ApolloServer } from 'apollo-server'
+import schema from './schema'
+import { createContext } from './context'
 
-use(prisma({
-    client: {
-        instance: new PrismaClient()
-    },
-    migrations: true,
-    features: {
-        crud: true
-    }
-}))
+const app = new ApolloServer({
+    schema, context: createContext
+})
+
+app.listen({ port: 4000 }, () => console.log(`🚀 Server ready at: http://localhost:4000`))

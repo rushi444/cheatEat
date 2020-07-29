@@ -2,13 +2,26 @@
   "version": "0.3.14-fixed",
   "steps": [
     {
-      "tag": "UpdateArgument",
+      "tag": "CreateSource",
+      "source": "db"
+    },
+    {
+      "tag": "CreateArgument",
       "location": {
         "tag": "Source",
         "source": "db"
       },
       "argument": "provider",
-      "newValue": "\"postgresql\""
+      "value": "\"postgresql\""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Source",
+        "source": "db"
+      },
+      "argument": "url",
+      "value": "\"***\""
     },
     {
       "tag": "CreateModel",
@@ -33,36 +46,33 @@
       }
     },
     {
+      "tag": "CreateField",
+      "model": "Post",
+      "field": "User",
+      "type": "User",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "User"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
       "tag": "CreateDirective",
       "location": {
         "path": {
           "tag": "Field",
-          "model": "Post",
+          "model": "User",
           "field": "id"
         },
-        "directive": "default"
+        "directive": "id"
       }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "id"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "value": "cuid()"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "author",
-      "type": "User",
-      "arity": "List"
     },
     {
       "tag": "CreateField",
@@ -88,6 +98,13 @@
       "field": "birthDate",
       "type": "DateTime",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "postId",
+      "type": "String",
+      "arity": "Optional"
     },
     {
       "tag": "CreateField",
@@ -134,38 +151,6 @@
       },
       "argument": "references",
       "value": "[id]"
-    },
-    {
-      "tag": "CreateField",
-      "model": "User",
-      "field": "postId",
-      "type": "String",
-      "arity": "Optional"
-    },
-    {
-      "tag": "DeleteField",
-      "model": "User",
-      "field": "name"
-    },
-    {
-      "tag": "UpdateField",
-      "model": "User",
-      "field": "id",
-      "type": "String"
-    },
-    {
-      "tag": "UpdateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "id"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "newValue": "cuid()"
     }
   ]
 }
