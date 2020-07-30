@@ -1,0 +1,1 @@
+export { User, UserQuery } from './User'

@@ -13,7 +13,8 @@
     "postinstall": "yarn run generate",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/index",
     "save": "prisma migrate save --experimental",
-    "up": "prisma migrate up --experimental"
+    "up": "prisma migrate up --experimental",
+    "migrate": "yarn run save && yarn run up"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

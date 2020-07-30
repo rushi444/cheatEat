@@ -1,4 +1,4 @@
-import {  objectType } from "@nexus/schema";
+import { objectType } from "@nexus/schema"
 
 export const User = objectType({
     name: 'User',
@@ -8,7 +8,7 @@ export const User = objectType({
     }
 })
 
-export const Query = objectType({
+export const UserQuery = objectType({
     name: 'Query',
     definition: t => {
         t.field('users', {

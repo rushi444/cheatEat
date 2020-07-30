@@ -1,0 +1,38 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteModel",
+      "model": "Post"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "password",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "birthDate"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "postId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Post"
+    }
+  ]
+}
