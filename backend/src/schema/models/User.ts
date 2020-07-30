@@ -1,4 +1,5 @@
 import { objectType, queryType, stringArg, mutationType } from "@nexus/schema"
+import bcrypt from 'bcryptjs'
 
 export const User = objectType({
     name: 'User',
@@ -32,6 +33,7 @@ export const UserMutation = mutationType({
                 email: stringArg({ required: true })
             },
             resolve: async (parent, { name, password, email }, { prisma }, info) => {
+                const hashedPassword = await bcrypt.hash(password, 10)
                 return await prisma.user.create({
                     data: {
                         name,
